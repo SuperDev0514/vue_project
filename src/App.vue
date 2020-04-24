@@ -4,6 +4,7 @@
 
         <div v-if="authenticatedUsername">
             <UserPanel :username="authenticatedUsername" @logout="logMeOut()"></UserPanel>
+            <MeetingsPage></MeetingsPage>
         </div>
 
         <div v-else>
@@ -16,9 +17,10 @@
     import "milligram";
     import LoginForm from "./LoginForm";
     import UserPanel from "./UserPanel";
+    import MeetingsPage from "./meetings/MeetingsPage";
 
     export default {
-        components: {LoginForm, UserPanel},
+        components: {LoginForm, MeetingsPage, UserPanel},
         data() {
             return {
                 authenticatedUsername: '',
