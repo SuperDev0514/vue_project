@@ -2,7 +2,7 @@
     <div>
         <label>Zaloguj się e-mailem</label>
         <input type="email" v-model="email">
-        <button @click="enter()">{{ buttonLabel }}</button>
+        <button @click="enter()">{{ buttonLabel || 'Zaloguj się' }}</button>
     </div>
 </template>
 

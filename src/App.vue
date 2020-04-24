@@ -8,12 +8,8 @@
         </div>
 
         <div v-else>
-            <LoginForm @login="(username) => logMeIn(username)" button-label="Wejdź"></LoginForm>
-            <LoginForm @login="(username) => logMeIn(username)" button-label="Wleć"></LoginForm>
-            <LoginForm @login="(username) => logMeIn(username)"
-                        :button-label="Math.random() < 0.5 ? 'Etykieta A' : 'Etykieta B'"></LoginForm>
+            <LoginForm @login="(username) => logMeIn(username)"></LoginForm>
         </div>
-
     </div>
 </template>
 
