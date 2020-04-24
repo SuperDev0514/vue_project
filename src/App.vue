@@ -7,6 +7,7 @@
         <div v-else>Twój adres e-mail jest stanowczo za długi.</div>
 
         <input type="email" v-model="email">
+        <button @click="alertMyEmail()">Wyświetl mój e-mail w alercie</button>
     </div>
 </template>
 
@@ -15,6 +16,11 @@
         data() {
             return {
                 email: ''
+            }
+        },
+        methods: {
+            alertMyEmail() {
+                alert(this.email);
             }
         }
     }
