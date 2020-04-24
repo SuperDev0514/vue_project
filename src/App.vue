@@ -17,6 +17,8 @@
 </template>
 
 <script>
+    import "milligram";
+
     export default {
         data() {
             return {
