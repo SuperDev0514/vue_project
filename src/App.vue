@@ -1,19 +1,16 @@
 <template>
-  <div class="my-app">
-    <h1>Hello MWO!</h1>
-  </div>
+    <div>
+        <h1>Twój e-mail to {{ email }}</h1>
+        <input type="email" v-model="email">
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        data() {
+            return {
+                email: ''
+            }
+        }
+    }
 </script>
-
-<style>
-.my-app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
