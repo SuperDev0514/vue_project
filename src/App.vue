@@ -4,20 +4,24 @@
     <div v-if="authenticatedUserName">Witaj {{authenticatedUserName}}
     <a @click="logout()"> Wyloguj </a></div>
 
-    <div v-else>Zaloguj sie mailem <input type="email" v-model="email">
-    <button @click="login()"> Wchodze </button></div>
+    <div v-else><login-form @login="login($event)"></login-form></div>
   </div>
+  
 </template>
 
 <script>
 
 import "milligram";
+import LoginForm from "./LoginForm";
 
 export default {
+  components:{
+    LoginForm
+  },
+
   methods: {
-    login(){
-      this.authenticatedUserName = this.email;
-      this.email = '';
+    login(username){
+      this.authenticatedUserName = username;
     },
     logout() {
       this.authenticatedUserName='';
@@ -26,7 +30,6 @@ export default {
 
   data(){
     return{
-      email:'',
       authenticatedUserName: ''
     };
   }
