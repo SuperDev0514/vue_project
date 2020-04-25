@@ -4,9 +4,11 @@
     <div v-if="authenticatedUserName">Witaj {{authenticatedUserName}}
     <a @click="logout()"> Wyloguj </a></div>
 
-    <div v-else><login-form @login="login($event)"></login-form></div>
+    <div v-else>
+      <login-form @login="login($event)"></login-form>
+    </div>
   </div>
-  
+
 </template>
 
 <script>
