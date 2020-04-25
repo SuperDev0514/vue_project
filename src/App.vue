@@ -1,10 +1,11 @@
 <template>
   <div>
     <h1>Witaj w systemie zapisów na zajecia.</h1>
-    <div v-if="loggeged == 0">Zaloguj sie mailem <input type="email" v-model="email">
+    <div v-if="authenticatedUserName">Witaj {{authenticatedUserName}}
+    <a @click="logout()"> Wyloguj </a></div>
+
+    <div v-else>Zaloguj sie mailem <input type="email" v-model="email">
     <button @click="login()"> Wchodze </button></div>
-    <div v-else>Witaj {{email}}
-    <button @click="logout()"> Wyloguj </button></div>
   </div>
 </template>
 
@@ -12,18 +13,18 @@
 export default {
   methods: {
     login(){
-      this.loggeged=1
+      this.authenticatedUserName = this.email;
+      this.email = '';
     },
     logout() {
-      this.loggeged=0
-      this.email = ''
+      this.authenticatedUserName='';
     }
   },
 
   data(){
     return{
       email:'',
-      loggeged:0
+      authenticatedUserName: ''
     };
   }
 }
