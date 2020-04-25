@@ -10,6 +10,9 @@
 </template>
 
 <script>
+
+import "milligram";
+
 export default {
   methods: {
     login(){
