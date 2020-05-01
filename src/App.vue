@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1>Witaj w systemie zapisów na zajecia.</h1>
-    <div v-if="authenticatedUserName">Witaj {{authenticatedUserName}}
-    <a @click="logout()"> Wyloguj </a></div>
-
-    <div v-else>
+    <h1>System zapisów na zajecia.</h1>
+    <div v-show="authenticatedUserName">
+      <logged-user @logout="logout()" :user-name="this.authenticatedUserName"></logged-user>
+      <meeting-page :user-name="this.authenticatedUserName"></meeting-page>
+    </div>
+    <div v-if="authenticatedUserName == ''">
       <login-form @login="login($event)"></login-form>
     </div>
   </div>
@@ -15,10 +16,14 @@
 
 import "milligram";
 import LoginForm from "./LoginForm";
+import LoggedUser from "./LoggedUser";
+import MeetingPage from "./MeetingPage";
 
 export default {
   components:{
-    LoginForm
+    LoginForm,
+    LoggedUser,
+    MeetingPage
   },
 
   methods: {
