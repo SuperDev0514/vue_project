@@ -1,4 +1,5 @@
 <template>
+
     <div v-if="meetings.length > 0">
         <h3>Zaplanowane zajecia ({{meetings.length}})</h3>
         <table>
@@ -14,15 +15,16 @@
             <tr v-for="meeting in meetings" :key="meeting.name">
                 <td>{{ meeting.name }}</td>
                 <td>{{ meeting.description }}</td>
-                <td><ul>
-                        <li v-for="participant in meeting.participants">{{participant}}</li></ul></td>
                 <td>
-                    
+                    <ul>
+                        <li v-for="participant in meeting.participants">{{participant}}</li>
+                    </ul>
+                </td>
+                <td>    
                     <button class="button button-outline" v-if="participantSigned(meeting)" @click="resignFromMeeting(meeting)">Wypisz sie</button>
                     <button class="button button-outline" v-else @click="joinMeeting(meeting)">Zapisz sie</button>
                     <button v-if="meeting.participants.length == 0" @click="deleteMeeting(meeting)">Usun puste spotkanie</button>
                 </td>
-
             </tr>
         </tbody>
         </table>
@@ -30,6 +32,7 @@
     <div v-else>
         <h3>Brak zaplanowanych spotkań</h3>
     </div>
+
 </template>
 
 <script>
@@ -63,4 +66,5 @@ export default {
 
     },
 }
+
 </script>

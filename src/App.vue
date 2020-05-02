@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <h1>System zapisów na zajecia.</h1>
     <div v-show="authenticatedUserName">
@@ -20,6 +21,7 @@ import LoggedUser from "./LoggedUser";
 import MeetingPage from "./MeetingPage";
 
 export default {
+
   components:{
     LoginForm,
     LoggedUser,
