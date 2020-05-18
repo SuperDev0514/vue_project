@@ -21,7 +21,7 @@
 export default {
     data() {
         return {
-            newMeeting: {},
+            newMeeting: {participants: []},
             nameGiven: true
         };
     },
@@ -29,9 +29,8 @@ export default {
     methods: {
         addNewMeeting() {
             if (this.newMeeting.name != null){
-                this.newMeeting.participants = [];
                 this.$emit('added', this.newMeeting);
-                this.newMeeting = {};
+                this.newMeeting = {participants: []};
                 this.nameGiven = true;
             } else {
                 this.nameGiven = false;
