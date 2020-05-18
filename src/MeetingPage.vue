@@ -8,8 +8,7 @@
             @resign="resignFromMeeting($event)" 
             @delete="deleteMeeting($event)" 
             :meetings="meetings" 
-            :user-name="userName" 
-            :key="update"></meetings-list>
+            :user-name="userName"></meetings-list>
     </div>
 
 </template>
@@ -32,7 +31,6 @@ export default {
     data() {
         return {
             meetings: [],
-            update: 0,
             newMeeting: false,
         };
     },
@@ -45,21 +43,18 @@ export default {
 
         joinMeeting(meeting) {
             meeting.participants.push(this.userName);
-            this.update++;
         },
 
         resignFromMeeting(meeting) {
             var index;
             index = meeting.participants.indexOf(this.userName);
             meeting.participants.splice(index,1);
-            this.update++; 
         },
 
         deleteMeeting(meeting) {
             var index;
             index = this.meetings.indexOf(meeting);
             this.meetings.splice(index,1);
-            this.update++;
         },
 
         showNewMeetingForm() {
