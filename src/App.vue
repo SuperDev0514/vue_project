@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <h1>Witaj w systemie do zapisów na zajęcia</h1>
+
+        <div v-if="authenticatedUsername">
+            <UserPanel :username="authenticatedUsername" @logout="logMeOut()"></UserPanel>
+            <MeetingsPage></MeetingsPage>
+        </div>
+
+        <div v-else>
+            <LoginForm @login="(username) => logMeIn(username)"></LoginForm>
+        </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import "milligram";
+    import LoginForm from "./LoginForm";
+    import UserPanel from "./UserPanel";
+    import MeetingsPage from "./meetings/MeetingsPage";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        components: {LoginForm, MeetingsPage, UserPanel},
+        data() {
+            return {
+                authenticatedUsername: '',
+            }
+        },
+        methods: {
+            logMeIn(username) {
+                this.authenticatedUsername = username;
+            },
+            logMeOut() {
+                this.authenticatedUsername = '';
+            }
+        }
+    }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
